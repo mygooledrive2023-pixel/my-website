@@ -1,25 +1,652 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome to My Random Website</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For Alfiya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* bg-slate-950 */
+            color: #d6d3d1; /* text-stone-300 */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page.active {
+            display: block;
+        }
+        .nav-link.active {
+            color: #fecdd3; /* text-rose-300 */
+        }
+        .accordion-content {
+            overflow: hidden;
+            transition: max-height 0.5s ease-in-out;
+            max-height: 0;
+        }
+        .accordion-content.open {
+            max-height: 10rem; /* max-h-40 */
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-fade-in {
+             animation: fadeIn 1s forwards;
+        }
+        .animate-slide-up {
+            animation: slideUp 1s forwards;
+        }
+
+        /* --- Celebration Styles --- */
+        .celebration-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+        }
+        @keyframes move-twink-back {
+            from {background-position:0 0;}
+            to {background-position:-10000px 5000px;}
+        }
+        .stars, .twinkling {
+            position:absolute;
+            top:0;
+            left:0;
+            right:0;
+            bottom:0;
+            width:100%;
+            height:100%;
+            display:block;
+        }
+        .stars {
+            background:#000 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAAAXNSR0IArs4c6QAAAn5JREFUeNrt29GRwyAYh+Hl38QBC/yACk7MQCwER9zFFRzAEf0A2wg30BEvYAl3wBEf4gkcwBEc4BFd/PlBAjpPzlz7V+qJ92ZJ0iS53pZf2fW+2D97Z2SbtfP6nh9IkvT8X+y5L0mS5feJ5T1JSZJ8N0mSHiQpyYckSVKSpCQ5SZIkSUpSkhxJkiQpSUpSUpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSUpIkvYf9d7f/F//HkyRJ/pG09L9ekqQk+bWkpP+VpCS5SJK05F0lSUlykyRpSbr/0iS9Z1f2nre+T5Jk/0n6/wGg447TLkX6lAAAAABJRU5ErkJggg==) repeat top center;
+            z-index: 0;
+        }
+        .twinkling {
+            background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAAAXNSR0IArs4c6QAAA9RJREFUeNrt3C1y1GAQBuFXD9iCBXwAFc/sQlYCi/hxBVcwAEf0A2wjuEBHvIAl3AEf8QT24AiO4BFd/Hk/UEB6/i+l/tW4ntd7U9rPzc72/fM/2513Z2xbtv/e33dJ0vJ/sf94tCdJ0pL3E899kpKkJfddkqQPSUqeJElSkiQpSUpykiRJSlKSlCQnSJKUpCQpSUqSJCUpSUpSkpQkSUpSkpQkSUpSkpQkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSk-200px 5000px);
+            z-index: 1;
+            animation: move-twink-back 200s linear infinite;
+        }
+
+        /* Cake & Candle Styles */
+        .flame {
+            position: absolute;
+            width: 14px;
+            height: 24px;
+            background: #ffac33;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: -24px;
+            left: -1px;
+            animation: flicker 0.9s infinite alternate, glow 1.8s infinite;
+            transform-origin: bottom;
+            transition: all 0.3s ease-out;
+        }
+        @keyframes flicker {
+            0%, 100% { transform: scale(1, 1) rotate(-2deg); opacity: 1; }
+            25% { transform: scale(1.05, 0.9) rotate(2deg); opacity: 0.85; }
+            50% { transform: scale(0.95, 1.05) rotate(-1deg); opacity: 1; }
+            75% { transform: scale(1, 0.95) rotate(1deg); opacity: 0.9; }
+        }
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 15px 5px #ffac33, 0 0 25px 10px #ffac33, 0 0 35px 15px #ff8c00; }
+            50% { box-shadow: 0 0 12px 4px #ffac33, 0 0 20px 8px #ffac33, 0 0 30px 12px #ff8c00; }
+        }
+        .flame.out {
+            transform: scale(0);
+            opacity: 0;
+        }
+
+        /* Balloon Styles */
+        .balloon {
+            position: fixed;
+            bottom: -200px;
+            width: 80px;
+            height: 100px;
+            border-radius: 50%;
+            z-index: 100;
+            opacity: 0.8;
+            animation: floatUp 10s ease-in-out forwards;
+        }
+        @keyframes floatUp {
+            from {
+                bottom: -200px;
+                transform: translateX(0) rotate(0deg);
+            }
+            to {
+                bottom: 120vh;
+                transform: translateX(var(--x-end)) rotate(15deg);
+            }
+        }
+
+        /* Confetti Styles */
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 99;
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-10vh) rotateZ(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotateZ(720deg);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
-<body>
-  <header>
-    <h1>🌍 Welcome to My Random Website!</h1>
-  </header>
+<body class="bg-slate-950 text-stone-300">
 
-  <main>
-    <p>Hello world! This is a simple website hosted on GitHub Pages.</p>
-    <button onclick="sayHello()">Click Me!</button>
-  </main>
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-sm shadow-lg shadow-black/20">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-xl font-semibold text-stone-100 font-serif">
+                For Alfiya
+            </div>
+            <div class="hidden md:flex items-center space-x-2" id="desktop-nav">
+                <a href="#home" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 active">Home</a>
+                <a href="#love-notes" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Love Notes</a>
+                <a href="#reasons" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Why I Love You</a>
+                <a href="#celebration" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Celebration</a>
+                <a href="#future" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Our Future</a>
+                <a href="#message" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">A Note</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-stone-200">
+                    <svg id="menu-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                    <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-slate-900/90">
+            <div class="flex flex-col items-center py-4">
+                 <a href="#home" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 active">Home</a>
+                <a href="#love-notes" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Love Notes</a>
+                <a href="#reasons" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Why I Love You</a>
+                <a href="#celebration" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Celebration</a>
+                <a href="#future" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Our Future</a>
+                <a href="#message" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">A Note</a>
+            </div>
+        </div>
+    </header>
 
-  <footer>
-    <p>Created by <strong>You</strong> 😎</p>
-  </footer>
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <div class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
+                <div class="absolute inset-0 bg-black/50 z-10"></div>
+                <img src="https://picsum.photos/id/1011/1920/1080" alt="Beautiful background" class="absolute inset-0 w-full h-full object-cover animate-fade-in" />
+                <div class="relative z-20 p-8 animate-slide-up">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-stone-100 leading-tight font-serif">Happy  Birthday,</h1>
+                    <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold text-rose-300 font-serif mb-8">Alfiya</h2>
+                    <p class="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto mb-8">A celebration of you and all the wonderful moments we've shared. The countdown to your special day begins!</p>
+                    <div id="countdown" class="flex justify-center my-8"></div>
+                </div>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <!-- Love Notes Page -->
+        <section id="love-notes" class="page">
+             <div class="min-h-screen pt-24 pb-12">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-bold text-center text-stone-100 mb-4 font-serif">Notes Across the Miles</h1>
+                    <div class="w-24 h-1 bg-rose-300 mx-auto mb-12"></div>
+                    <div id="love-notes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Notes will be injected by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reasons Page -->
+        <section id="reasons" class="page">
+            <div class="min-h-screen pt-24 pb-12">
+                <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-bold text-center text-stone-100 mb-4 font-serif">The A-Z of Why I Love You</h1>
+                    <div class="w-24 h-1 bg-rose-300 mx-auto mb-12"></div>
+                    <div id="reasons-accordion" class="max-w-3xl mx-auto">
+                        <!-- Accordion items will be injected by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Celebration Page -->
+        <section id="celebration" class="page relative overflow-hidden">
+            <div class="celebration-bg">
+                <div class="stars"></div>
+                <div class="twinkling"></div>
+            </div>
+            <div id="confetti-container-wrapper"></div>
+            <div id="balloons-container-wrapper"></div>
+            <div class="min-h-screen pt-24 pb-12 flex flex-col items-center justify-center text-center relative z-10">
+                <div class="container mx-auto px-6">
+                    <h1 id="celebration-title" class="text-4xl md:text-6xl font-bold text-stone-100 mb-4 font-serif transition-opacity duration-1000">
+                        A Birthday Wish
+                    </h1>
+                    <div id="celebration-divider" class="w-24 h-1 bg-rose-300 mx-auto mb-12 transition-all duration-1000"></div>
+
+                    <div class="relative h-64 flex items-center justify-center">
+                        <div id="birthday-message-container" class="absolute transition-opacity duration-1000 delay-500 opacity-0">
+                             <h2 class="font-serif text-4xl md:text-6xl text-rose-200 animate-slide-up" style="text-shadow: 0 0 15px #fecdd3">Happy Birthday, Alfiya</h2>
+                        </div>
+                        <div id="cake-container" class="transition-all duration-1000">
+                             <p id="celebration-prompt" class="text-stone-300 text-lg mb-8">Close your eyes, make a wish...</p>
+                            <div class="relative w-[280px] h-[220px] scale-110">
+                                <!-- Plate -->
+                                <div class="absolute w-[340px] h-[25px] bg-gradient-to-b from-slate-100 to-slate-300 bottom-[-15px] left-[-30px] rounded-[50%] shadow-2xl shadow-black/50"></div>
+                                <!-- Cake Layers -->
+                                <div class="absolute w-[280px] h-[75px] bg-gradient-to-b from-[#d04d7e] to-[#a83c66] bottom-0 rounded-[50%/25px] shadow-lg"></div>
+                                <div class="absolute w-[280px] h-[70px] bg-gradient-to-b from-[#f472b6] to-[#d65aa1] bottom-[70px] rounded-[50%/25px] shadow-lg"></div>
+                                <div class="absolute w-[280px] h-[80px] bg-gradient-to-b from-[#fbcfe8] to-[#f8b2d8] bottom-[135px] rounded-[50%/30px] shadow-lg"></div>
+                                <!-- Icing Top -->
+                                <div class="absolute w-[280px] h-[45px] bg-white top-0 rounded-[50%/25px] z-10 shadow-md"></div>
+                                <!-- Icing Drips -->
+                                <div class="absolute w-8 h-10 bg-white top-[25px] left-[20px] rounded-full z-10"></div>
+                                <div class="absolute w-10 h-16 bg-white top-[25px] left-[60px] rounded-full z-10"></div>
+                                <div class="absolute w-8 h-12 bg-white top-[25px] left-[115px] rounded-full z-10"></div>
+                                <div class="absolute w-12 h-16 bg-white top-[25px] left-[150px] rounded-full z-10"></div>
+                                <div class="absolute w-10 h-14 bg-white top-[25px] left-[210px] rounded-full z-10"></div>
+                                <!-- Candles -->
+                                <div class="candle absolute w-4 h-16 top-[-65px] z-20 left-[60px]">
+                                    <div class="absolute bottom-0 w-full h-full bg-gradient-to-r from-rose-100 to-white rounded-t-full shadow-inner"></div>
+                                    <div class="flame"></div>
+                                </div>
+                                <div class="candle absolute w-4 h-16 top-[-65px] z-20 left-[130px]">
+                                    <div class="absolute bottom-0 w-full h-full bg-gradient-to-r from-rose-100 to-white rounded-t-full shadow-inner"></div>
+                                    <div class="flame"></div>
+                                </div>
+                                <div class="candle absolute w-4 h-16 top-[-65px] z-20 left-[200px]">
+                                    <div class="absolute bottom-0 w-full h-full bg-gradient-to-r from-rose-100 to-white rounded-t-full shadow-inner"></div>
+                                    <div class="flame"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button id="blow-candles-btn" class="mt-24 px-8 py-3 bg-rose-400 text-slate-900 font-bold rounded-full shadow-lg hover:bg-rose-300 transition-all duration-300 transform hover:scale-105">
+                       Enable Mic & Make a Wish
+                    </button>
+                    <p id="mic-denied-message" class="text-rose-300 text-sm mt-2 hidden">Microphone access was denied, but you can still make a wish!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Page -->
+        <section id="future" class="page">
+            <div class="min-h-screen pt-24 pb-12 flex items-center">
+                 <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-bold text-center text-stone-100 mb-4 font-serif">To Our Future</h1>
+                    <div class="w-24 h-1 bg-rose-300 mx-auto mb-12"></div>
+                    <div class="max-w-3xl mx-auto text-center space-y-6 text-stone-300 text-lg leading-relaxed">
+                        <p>Looking ahead, my heart is filled with so much excitement and joy, because I know I get to spend it with you. I can't wait to see all the incredible things you'll achieve. Your passion, intelligence, and drive are unstoppable, and I'll be right here, cheering you on every step of the way.</p>
+                        <p>I dream of all the adventures we still have to take, the places we'll see, the challenges we'll overcome together, and the quiet, ordinary moments that we'll make extraordinary just by being together.</p>
+                        <p>You are my future. My forever. My greatest adventure. Thank you for letting me be a part of your story.</p>
+                        <img src="https://picsum.photos/id/431/1200/400" alt="Scenic view of the future" class="w-full rounded-lg shadow-lg mt-8" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Message Page -->
+        <section id="message" class="page">
+            <div class="min-h-screen pt-24 pb-12 flex items-center">
+                 <div class="container mx-auto px-6">
+                    <h1 class="text-4xl md:text-6xl font-bold text-center text-stone-100 mb-4 font-serif">One Last Thing...</h1>
+                    <div class="w-24 h-1 bg-rose-300 mx-auto mb-12"></div>
+                    <div class="max-w-3xl mx-auto text-center space-y-6 text-stone-300 text-lg leading-relaxed p-8 bg-slate-900 rounded-lg shadow-xl">
+                        <p>Dear Alfiya,</p>
+                        <p>If I could give you one thing in life, I would give you the ability to see yourself through my eyes. Only then would you realize how truly special you are.</p>
+                        <p>You've brought more love and happiness into my life than I ever could have imagined. Every day with you is a gift, and I cherish every single moment.</p>
+                        <p>Thank you for being you. Unapologetically, wonderfully, brilliantly you.</p>
+                        <p class="font-serif text-2xl text-rose-300 mt-8">Happy Birthday, my love.<br/>Forever and always.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // --- Constants ---
+    const BIRTHDAY_DATE = '2024-10-26T00:00:00';
+    const LOVE_NOTES = [
+        "They say distance makes the heart grow fonder, and with every mile between us, my heart doesn't just grow fonder—it beats stronger and more certain that you're the one for me.",
+        "I'm counting down the moments until I can hold you again, but until then, know that you're in my every thought and my every dream. The wait will be worth it.",
+        "Our video calls are the highlight of my day. Seeing your smile and hearing your laugh, even through a screen, is enough to make me feel like the luckiest person in the world.",
+        "Even with an ocean between us, I feel you right here with me. Your love is a constant presence in my life, a warmth that distance can never cool.",
+        "This distance has taught me the true meaning of trust and commitment. Building this beautiful love with you, brick by brick, from miles apart, is my greatest accomplishment.",
+        "Every memory of our time together is a treasure I hold close. They are the fuel that keeps my fire for you burning bright until we can make new ones.",
+        "Planning our next visit is my favorite pastime. The excitement of knowing we'll be together soon makes every day apart a little easier to bear.",
+        "You are worth every single mile. You're worth the wait, the late-night calls, the 'I miss yous'. You're worth everything.",
+        "Sometimes I'll see something that reminds me of you—a song, a flower, a sunset—and for a moment, it feels like you're right beside me. You're everywhere.",
+        "My love for you is bigger than any map, stronger than any time zone, and deeper than any ocean. I love you more than all the miles between us."
+    ];
+    const REASONS_LIST = [
+        { letter: 'A', title: 'For your Adventurous Spirit', content: "You make every day an adventure, whether we're exploring a new city or just trying a new recipe in the kitchen. I love your curiosity and passion for life." },
+        { letter: 'B', title: 'For your Bright Smile', content: "Your smile can light up the darkest room. It's the first thing I look for in the morning and the last thing I see at night. It's my favorite sight in the world." },
+        { letter: 'C', title: 'For your Compassion', content: "The way you care for others—friends, family, animals, even strangers—is one of the most beautiful things about you. Your heart is so full of kindness." },
+        { letter: 'D', title: 'For your Dreams', content: "I admire how you chase your dreams with such determination and grace. You inspire me to be better every single day. I'm your biggest fan." },
+        { letter: 'E', title: 'For being Everything', content: "You are my everything. My best friend, my partner, my confidante, my greatest love. Life is infinitely better with you in it." },
+        { letter: 'F', title: 'For your Funny Bone', content: "You have the ability to make me laugh even on the toughest days. Your sense of humor is a gift, and I love our moments of silly, uncontrollable laughter." },
+        { letter: 'G', title: 'For your Generosity', content: "You give so much of yourself to the people you love, never asking for anything in return. Your generous spirit is one of the many things that makes you so special." },
+        { letter: 'H', title: 'For how you feel like Home', content: "With you, I am home. It doesn't matter where we are in the world; as long as I'm with you, I have everything I need. You are my safe harbor." },
+        { letter: 'I', title: 'For your Intelligence', content: "I love the way your mind works. I could listen to you talk about your passions for hours. You're brilliant, and you challenge me to see the world in new ways." },
+        { letter: 'J', title: 'For the Joy you bring', content: "You've brought a depth of joy into my life I never knew was possible. Simply being around you makes everything brighter and more beautiful." },
+        { letter: 'K', title: 'For your Kindness', content: "Your kindness is not just an act, it's who you are at your core. The gentle way you treat everyone and everything around you is a constant inspiration." },
+        { letter: 'L', title: 'For the way you Listen', content: "You truly listen. Not just to my words, but to the feelings behind them. I feel so seen and understood by you, and it's a priceless gift." },
+        { letter: 'M', title: 'For the Memories we make', content: "Every day with you is a new memory I cherish. From grand adventures to quiet nights in, our time together is my most treasured possession." },
+        { letter: 'N', title: 'For your Nurturing soul', content: "You have such a caring and nurturing spirit. The way you take care of me, our friends, and our home fills my heart with so much warmth." },
+        { letter: 'O', title: 'For being so Optimistic', content: "Your positive outlook on life is contagious. You always find the silver lining and remind me that there's good in every situation, which helps me be a better person." },
+        { letter: 'P', title: 'For your Patience', content: "You have an incredible amount of patience, especially with my quirks. You give me the space to be myself, and I love you for it." },
+        { letter: 'Q', title: 'For your Quirky qualities', content: "I adore all your little quirks—the way you hum when you're concentrating, your specific way of organizing books. They're all parts of the amazing person you are." },
+        { letter: 'R', title: 'For the Respect you show', content: "You respect me for who I am—my thoughts, my feelings, my dreams. That mutual respect is the foundation of our beautiful relationship." },
+        { letter: 'S', title: 'For your Strength', content: "You possess a quiet strength that I admire so much. You face challenges with grace and resilience, and you inspire me with your courage every day." },
+        { letter: 'T', title: 'For the Trust between us', content: "I trust you completely, with my heart and my deepest secrets. The trust we share is sacred, and it makes our bond unbreakable." },
+        { letter: 'U', title: 'For how Understanding you are', content: "You always try to understand my perspective, even when we disagree. Your empathy and willingness to see my side means the world to me." },
+        { letter: 'V', title: 'For your Vibrant energy', content: "Your energy is infectious. You bring life and excitement into every room you enter, and I'm so lucky to be a part of your vibrant world." },
+        { letter: 'W', title: 'For your Wisdom', content: "You have a wisdom that goes beyond your years. I often turn to you for advice, and your thoughtful guidance always helps me find my way." },
+        { letter: 'X', title: 'For the \'X\' factor', content: "There's just something about you—an indefinable, magnetic quality that drew me in from the very beginning. You're one of a kind." },
+        { letter: 'Y', title: 'For being uniquely You', content: "Above all, I love you for being you. Perfectly imperfect, wonderfully complex, and completely irreplaceable. Please never change." },
+        { letter: 'Z', title: 'For your Zest for life', content: "You embrace life with such passion and enthusiasm. Being with you makes me want to experience everything the world has to offer. You make life a grand adventure." },
+    ];
+    const CONFETTI_COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6', '#8b5cf6', '#ec4899', '#f0abfc'];
+    const BALLOON_COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6', '#8b5cf6', '#ec4899'];
+
+
+    // --- Page Content Injection ---
+    const loveNotesGrid = document.getElementById('love-notes-grid');
+    if (loveNotesGrid) {
+        loveNotesGrid.innerHTML = LOVE_NOTES.map((note, index) => `
+            <div class="bg-slate-800 p-6 rounded-lg shadow-lg hover:shadow-rose-400/20 transition-shadow duration-300 ${index === LOVE_NOTES.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}">
+                <p class="text-stone-300">"${note}"</p>
+            </div>
+        `).join('');
+    }
+
+    const reasonsAccordion = document.getElementById('reasons-accordion');
+    if (reasonsAccordion) {
+        reasonsAccordion.innerHTML = REASONS_LIST.map((reason, index) => `
+            <div class="border-b border-slate-700">
+                <button class="accordion-button w-full flex justify-between items-center py-5 text-left text-stone-100" aria-expanded="${index === 0}">
+                    <span class="text-2xl font-serif flex items-center">
+                        <span class="text-4xl text-rose-300 mr-4">${reason.letter}</span>
+                        ${reason.title}
+                    </span>
+                    <span class="transform transition-transform duration-300 ${index === 0 ? 'rotate-180' : ''}">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </button>
+                <div class="accordion-content ${index === 0 ? 'open' : ''}">
+                    <p class="py-4 pr-8 pl-12 text-stone-300">${reason.content}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+
+
+    // --- Navigation ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const pages = document.querySelectorAll('.page');
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    const handleNavigate = (hash) => {
+        pages.forEach(page => page.classList.remove('active'));
+        const targetPage = document.querySelector(hash);
+        if (targetPage) {
+            targetPage.classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === hash);
+        });
+
+        window.scrollTo(0, 0);
+
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
+    };
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const hash = e.currentTarget.getAttribute('href');
+            handleNavigate(hash);
+        });
+    });
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+    });
+
+    // --- Countdown Timer ---
+    const countdownElement = document.getElementById('countdown');
+    if (countdownElement) {
+        const targetDate = new Date(BIRTHDAY_DATE).getTime();
+        const countdownInterval = setInterval(() => {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            if (difference < 0) {
+                clearInterval(countdownInterval);
+                countdownElement.innerHTML = `<span class="text-4xl font-bold text-stone-100">Happy Birthday!</span>`;
+                return;
+            }
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+            const format = (num) => String(num).padStart(2, '0');
+
+            countdownElement.innerHTML = `
+                <div class="flex flex-col items-center mx-2 sm:mx-4">
+                    <span class="text-4xl sm:text-6xl font-bold text-stone-100">${format(days)}</span>
+                    <span class="text-sm sm:text-base text-rose-300 uppercase tracking-widest">days</span>
+                </div>
+                <div class="flex flex-col items-center mx-2 sm:mx-4">
+                    <span class="text-4xl sm:text-6xl font-bold text-stone-100">${format(hours)}</span>
+                    <span class="text-sm sm:text-base text-rose-300 uppercase tracking-widest">hours</span>
+                </div>
+                <div class="flex flex-col items-center mx-2 sm:mx-4">
+                    <span class="text-4xl sm:text-6xl font-bold text-stone-100">${format(minutes)}</span>
+                    <span class="text-sm sm:text-base text-rose-300 uppercase tracking-widest">minutes</span>
+                </div>
+                <div class="flex flex-col items-center mx-2 sm:mx-4">
+                    <span class="text-4xl sm:text-6xl font-bold text-stone-100">${format(seconds)}</span>
+                    <span class="text-sm sm:text-base text-rose-300 uppercase tracking-widest">seconds</span>
+                </div>
+            `;
+        }, 1000);
+    }
+
+    // --- Accordion ---
+    const accordionContainer = document.getElementById('reasons-accordion');
+    if (accordionContainer) {
+        accordionContainer.addEventListener('click', (e) => {
+            const button = e.target.closest('.accordion-button');
+            if (!button) return;
+
+            const allButtons = accordionContainer.querySelectorAll('.accordion-button');
+            const currentContent = button.nextElementSibling;
+            const currentIcon = button.querySelector('span.transform');
+            const isOpening = button.getAttribute('aria-expanded') === 'false';
+
+            allButtons.forEach(otherButton => {
+                otherButton.setAttribute('aria-expanded', 'false');
+                otherButton.nextElementSibling.classList.remove('open');
+                otherButton.querySelector('span.transform').classList.remove('rotate-180');
+            });
+
+            if (isOpening) {
+                button.setAttribute('aria-expanded', 'true');
+                currentContent.classList.add('open');
+                currentIcon.classList.add('rotate-180');
+            }
+        });
+    }
+
+
+    // --- Celebration Page ---
+    const celebrationPage = document.getElementById('celebration');
+    if (celebrationPage) {
+        const blowCandlesBtn = document.getElementById('blow-candles-btn');
+        const flames = document.querySelectorAll('#celebration .flame');
+        const celebrationTitle = document.getElementById('celebration-title');
+        const celebrationDivider = document.getElementById('celebration-divider');
+        const cakeContainer = document.getElementById('cake-container');
+        const birthdayMessageContainer = document.getElementById('birthday-message-container');
+        const micDeniedMessage = document.getElementById('mic-denied-message');
+        const celebrationPrompt = document.getElementById('celebration-prompt');
+
+        let candlesBlown = false;
+        let micPermission = 'prompt';
+        let audioContext, analyser, animationFrameId;
+
+        const releaseConfetti = () => {
+            const container = document.getElementById('confetti-container-wrapper');
+            container.innerHTML = '<div class="confetti-container"></div>'; // Clear previous
+            const confettiContainer = container.firstChild;
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.backgroundColor = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+                confetti.style.animationDelay = `${Math.random() * 3}s`;
+                confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                confettiContainer.appendChild(confetti);
+            }
+        };
+
+        const releaseBalloons = () => {
+            const container = document.getElementById('balloons-container-wrapper');
+            container.innerHTML = ''; // Clear previous
+            for (let i = 0; i < 25; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                const xEnd = (Math.random() - 0.5) * 200 + 'px';
+                balloon.style.left = `${Math.random() * 95}vw`;
+                balloon.style.backgroundColor = BALLOON_COLORS[Math.floor(Math.random() * BALLOON_COLORS.length)];
+                balloon.style.setProperty('--x-end', xEnd);
+                balloon.style.animation = `floatUp ${Math.random() * 5 + 8}s ease-in-out ${Math.random() * 2}s forwards`;
+                container.appendChild(balloon);
+            }
+        };
+
+        const handleBlow = () => {
+            if (candlesBlown) return;
+            candlesBlown = true;
+
+            flames.forEach(flame => flame.classList.add('out'));
+
+            blowCandlesBtn.style.display = 'none';
+            micDeniedMessage.style.display = 'none';
+
+            celebrationTitle.classList.add('opacity-0');
+            celebrationDivider.classList.add('w-0', 'opacity-0');
+
+            cakeContainer.classList.add('scale-0', 'opacity-0');
+            birthdayMessageContainer.classList.remove('opacity-0');
+
+            setTimeout(() => {
+                releaseConfetti();
+                releaseBalloons();
+            }, 500);
+
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+            if (audioContext && audioContext.state !== 'closed') {
+                audioContext.close();
+            }
+        };
+
+        const detectBlow = () => {
+            if (!analyser) return;
+            const dataArray = new Uint8Array(analyser.frequencyBinCount);
+            analyser.getByteFrequencyData(dataArray);
+            const average = dataArray.reduce((acc, val) => acc + val, 0) / dataArray.length;
+            if (average > 180) { // blowThreshold
+                handleBlow();
+            } else {
+                animationFrameId = requestAnimationFrame(detectBlow);
+            }
+        };
+
+        const requestMic = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                const source = audioContext.createMediaStreamSource(stream);
+                analyser = audioContext.createAnalyser();
+                analyser.fftSize = 256;
+                source.connect(analyser);
+                micPermission = 'granted';
+                blowCandlesBtn.textContent = "Blow out the candles!";
+                celebrationPrompt.textContent = "Close your eyes, make a wish...";
+                micDeniedMessage.classList.add('hidden');
+                detectBlow();
+            } catch (err) {
+                console.error('Microphone access denied:', err);
+                micPermission = 'denied';
+                blowCandlesBtn.textContent = "Make a Wish";
+                celebrationPrompt.textContent = "Make a wish and click the button!";
+                micDeniedMessage.classList.remove('hidden');
+            }
+        };
+
+        blowCandlesBtn.addEventListener('click', () => {
+            if (micPermission === 'prompt') {
+                requestMic();
+            } else {
+                handleBlow();
+            }
+        });
+    }
+});
+</script>
+
 </body>
 </html>
