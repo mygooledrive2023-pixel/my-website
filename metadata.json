@@ -1,7 +1,0 @@
-{
-  "name": "For Alfiya: A Birthday Celebration",
-  "description": "A special, interactive web application to celebrate Alfiya's birthday, featuring a countdown, love notes, interactive elements, and personal messages.",
-  "requestFramePermissions": [
-    "microphone"
-  ]
-}
