@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,6 +14,7 @@
             font-family: 'Inter', sans-serif;
             background-color: #020617; /* bg-slate-950 */
             color: #d6d3d1; /* text-stone-300 */
+            overflow-x: hidden;
         }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
@@ -43,12 +45,6 @@
             from { transform: translateY(20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
-        .animate-fade-in {
-             animation: fadeIn 1s forwards;
-        }
-        .animate-slide-up {
-            animation: slideUp 1s forwards;
-        }
 
         /* --- Celebration Styles --- */
         .celebration-bg {
@@ -75,11 +71,11 @@
             display:block;
         }
         .stars {
-            background:#000 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAAAXNSR0IArs4c6QAAAn5JREFUeNrt29GRwyAYh+Hl38QBC/yACk7MQCwER9zFFRzAEf0A2wg30BEvYAl3wBEf4gkcwBEc4BFd/PlBAjpPzlz7V+qJ92ZJ0iS53pZf2fW+2D97Z2SbtfP6nh9IkvT8X+y5L0mS5feJ5T1JSZJ8N0mSHiQpyYckSVKSpCQ5SZIkSUpSkhxJkiQpSUpSUpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSUpIkvYf9d7f/F//HkyRJ/pG09L9ekqQk+bWkpP+VpCS5SJK05F0lSUlykyRpSbr/0iS9Z1f2nre+T5Jk/0n6/wGg447TLkX6lAAAAABJRU5ErkJggg==) repeat top center;
+            background:#000 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAAAXNSR0IArs4c6QAAAn5JREFUeNrt29GRwyAYh+Hl38QBC/yACk7MQCwER9zFFRzAEf0A2wg30BEvYAl3wBEf4gkcwBEc4BFd/PlBAjpPzlz7V+qJ92ZJ0iS53pZf2fW+2D97Z2SbtfP6nh9IkvT8X+y5L0mS5feJ5T1JSZJ8N0mSHiQpyYckSVKSpCQ5SZIkSUpSkhxJkiQpSUpSUpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSUpIkvYf9d7f/F//HkyRJ/pG09L9ekqQk+bWkpP+VpCS5SJK05F0lSUlykyRpSbr/0iS9Z1f2nre+T5Jk/0n6/wGg447TLkX6lAAAAABJRU5ErkJggg==) repeat top center;
             z-index: 0;
         }
         .twinkling {
-            background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAAAXNSR0IArs4c6QAAA9RJREFUeNrt3C1y1GAQBuFXD9iCBXwAFc/sQlYCi/hxBVcwAEf0A2wjuEBHvIAl3AEf8QT24AiO4BFd/Hk/UEB6/i+l/tW4ntd7U9rPzc72/fM/2513Z2xbtv/e33dJ0vJ/sf94tCdJ0pL3E899kpKkJfddkqQPSUqeJElSkiQpSUpykiRJSlKSlCQnSJKUpCQpSUqSJCUpSUpSkpQkSUpSkpQkSUpSkpQkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSk-200px 5000px);
+            background:transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAQAAADa613fAAAAAXNSR0IArs4c6QAAA9RJREFUeNrt3C1y1GAQBuFXD9iCBXwAFc/sQlYCi/hxBVcwAEf0A2wjuEBHvIAl3AEf8QT24AiO4BFd/Hk/UEB6/i+l/tW4ntd7U9rPzc72/fM/2513Z2xbtv/e33dJ0vJ/sf94tCdJ0pL3E899kpKkJfddkqQPSUqeJElSkiQpSUpykiRJSlKSlCQnSJKUpCQpSUqSJCUpSUpSkpQkSUpSkpQkSUpSUpIkSUpSkpIkSUpSUpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSkpIkSUpSk-200px 5000px);
             z-index: 1;
             animation: move-twink-back 200s linear infinite;
         }
@@ -166,17 +162,16 @@
 </head>
 <body class="bg-slate-950 text-stone-300">
 
-    <!-- Header -->
-    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-sm shadow-lg shadow-black/20">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-sm shadow-lg shadow-black/20">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="text-xl font-semibold text-stone-100 font-serif">
                 For Alfiya
             </div>
-            <div class="hidden md:flex items-center space-x-2" id="desktop-nav">
+            <div class="hidden md:flex items-center space-x-2">
                 <a href="#home" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 active">Home</a>
-                <a href="#love-notes" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Love Notes</a>
-                <a href="#reasons" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Why I Love You</a>
                 <a href="#celebration" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Celebration</a>
+                <a href="#reasons" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Why I Love You</a>
+                <a href="#love-notes" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Love Notes</a>
                 <a href="#future" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Our Future</a>
                 <a href="#message" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">A Note</a>
             </div>
@@ -194,9 +189,9 @@
         <div id="mobile-menu" class="hidden md:hidden bg-slate-900/90">
             <div class="flex flex-col items-center py-4">
                  <a href="#home" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 active">Home</a>
-                <a href="#love-notes" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Love Notes</a>
-                <a href="#reasons" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Why I Love You</a>
                 <a href="#celebration" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Celebration</a>
+                <a href="#reasons" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Why I Love You</a>
+                <a href="#love-notes" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Love Notes</a>
                 <a href="#future" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">Our Future</a>
                 <a href="#message" class="nav-link px-4 py-2 text-sm font-medium transition-colors duration-300 text-stone-300 hover:text-rose-300">A Note</a>
             </div>
@@ -207,13 +202,16 @@
         <!-- Home Page -->
         <section id="home" class="page active">
             <div class="relative min-h-screen flex items-center justify-center text-center text-white overflow-hidden">
+                <div id="home-celebration-effects" class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-30"></div>
                 <div class="absolute inset-0 bg-black/50 z-10"></div>
-                <img src="https://picsum.photos/id/1011/1920/1080" alt="Beautiful background" class="absolute inset-0 w-full h-full object-cover animate-fade-in" />
-                <div class="relative z-20 p-8 animate-slide-up">
-                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-stone-100 leading-tight font-serif">Happy  Birthday,</h1>
+                <img src="https://picsum.photos/id/1011/1920/1080" alt="Beautiful background" class="absolute inset-0 w-full h-full object-cover" style="animation: fadeIn 1s forwards;" />
+                <div class="relative z-20 p-8" style="animation: slideUp 1s forwards;">
+                    <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-stone-100 leading-tight font-serif">Happy Birthday,</h1>
                     <h2 class="text-5xl md:text-7xl lg:text-8xl font-bold text-rose-300 font-serif mb-8">Alfiya</h2>
                     <p class="text-lg md:text-xl text-stone-200 max-w-2xl mx-auto mb-8">A celebration of you and all the wonderful moments we've shared. The countdown to your special day begins!</p>
-                    <div id="countdown" class="flex justify-center my-8"></div>
+                    <div id="countdown-container" class="my-8">
+                         <div id="countdown" class="flex justify-center"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -246,12 +244,7 @@
 
         <!-- Celebration Page -->
         <section id="celebration" class="page relative overflow-hidden">
-            <div class="celebration-bg">
-                <div class="stars"></div>
-                <div class="twinkling"></div>
-            </div>
-            <div id="confetti-container-wrapper"></div>
-            <div id="balloons-container-wrapper"></div>
+            <div id="celebration-effects-wrapper" class="absolute inset-0 w-full h-full overflow-hidden pointer-events-none"></div>
             <div class="min-h-screen pt-24 pb-12 flex flex-col items-center justify-center text-center relative z-10">
                 <div class="container mx-auto px-6">
                     <h1 id="celebration-title" class="text-4xl md:text-6xl font-bold text-stone-100 mb-4 font-serif transition-opacity duration-1000">
@@ -261,7 +254,7 @@
 
                     <div class="relative h-64 flex items-center justify-center">
                         <div id="birthday-message-container" class="absolute transition-opacity duration-1000 delay-500 opacity-0">
-                             <h2 class="font-serif text-4xl md:text-6xl text-rose-200 animate-slide-up" style="text-shadow: 0 0 15px #fecdd3">Happy Birthday, Alfiya</h2>
+                             <h2 class="font-serif text-4xl md:text-6xl text-rose-200" style="text-shadow: 0 0 15px #fecdd3">Happy Birthday, Alfiya♥️</h2>
                         </div>
                         <div id="cake-container" class="transition-all duration-1000">
                              <p id="celebration-prompt" class="text-stone-300 text-lg mb-8">Close your eyes, make a wish...</p>
@@ -388,38 +381,70 @@ document.addEventListener('DOMContentLoaded', () => {
     const BALLOON_COLORS = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#3b82f6', '#8b5cf6', '#ec4899'];
 
 
+    // --- Helper Functions for Effects ---
+    const releaseConfetti = (wrapper) => {
+        if (!wrapper) return;
+        wrapper.innerHTML += '<div class="confetti-container"></div>';
+        const confettiContainer = wrapper.querySelector('.confetti-container');
+        for (let i = 0; i < 150; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = `${Math.random() * 100}%`;
+            confetti.style.backgroundColor = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
+            confetti.style.animationDelay = `${Math.random() * 3}s`;
+            confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
+            confettiContainer.appendChild(confetti);
+        }
+    };
+
+    const releaseBalloons = (wrapper) => {
+        if (!wrapper) return;
+        for (let i = 0; i < 25; i++) {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            const xEnd = (Math.random() - 0.5) * 200 + 'px';
+            balloon.style.left = `${Math.random() * 95}vw`;
+            balloon.style.backgroundColor = BALLOON_COLORS[Math.floor(Math.random() * BALLOON_COLORS.length)];
+            balloon.style.setProperty('--x-end', xEnd);
+            balloon.style.animation = `floatUp ${Math.random() * 5 + 8}s ease-in-out ${Math.random() * 2}s forwards`;
+            wrapper.appendChild(balloon);
+        }
+    };
+
     // --- Page Content Injection ---
-    const loveNotesGrid = document.getElementById('love-notes-grid');
-    if (loveNotesGrid) {
-        loveNotesGrid.innerHTML = LOVE_NOTES.map((note, index) => `
-            <div class="bg-slate-800 p-6 rounded-lg shadow-lg hover:shadow-rose-400/20 transition-shadow duration-300 ${index === LOVE_NOTES.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}">
-                <p class="text-stone-300">"${note}"</p>
-            </div>
-        `).join('');
-    }
-
-    const reasonsAccordion = document.getElementById('reasons-accordion');
-    if (reasonsAccordion) {
-        reasonsAccordion.innerHTML = REASONS_LIST.map((reason, index) => `
-            <div class="border-b border-slate-700">
-                <button class="accordion-button w-full flex justify-between items-center py-5 text-left text-stone-100" aria-expanded="${index === 0}">
-                    <span class="text-2xl font-serif flex items-center">
-                        <span class="text-4xl text-rose-300 mr-4">${reason.letter}</span>
-                        ${reason.title}
-                    </span>
-                    <span class="transform transition-transform duration-300 ${index === 0 ? 'rotate-180' : ''}">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                        </svg>
-                    </span>
-                </button>
-                <div class="accordion-content ${index === 0 ? 'open' : ''}">
-                    <p class="py-4 pr-8 pl-12 text-stone-300">${reason.content}</p>
+    const injectContent = () => {
+        const loveNotesGrid = document.getElementById('love-notes-grid');
+        if (loveNotesGrid) {
+            loveNotesGrid.innerHTML = LOVE_NOTES.map((note, index) => `
+                <div class="bg-slate-800 p-6 rounded-lg shadow-lg hover:shadow-rose-400/20 transition-shadow duration-300 ${index === LOVE_NOTES.length - 1 ? 'md:col-span-2 lg:col-span-1' : ''}">
+                    <p class="text-stone-300">"${note}"</p>
                 </div>
-            </div>
-        `).join('');
-    }
+            `).join('');
+        }
 
+        const reasonsAccordion = document.getElementById('reasons-accordion');
+        if (reasonsAccordion) {
+            reasonsAccordion.innerHTML = REASONS_LIST.map((reason, index) => `
+                <div class="border-b border-slate-700">
+                    <button class="accordion-button w-full flex justify-between items-center py-5 text-left text-stone-100" aria-expanded="${index === 0}">
+                        <span class="text-2xl font-serif flex items-center">
+                            <span class="text-4xl text-rose-300 mr-4">${reason.letter}</span>
+                            ${reason.title}
+                        </span>
+                        <span class="transform transition-transform duration-300 ${index === 0 ? 'rotate-180' : ''}">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5 7.5L10 12.5L15 7.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="accordion-content ${index === 0 ? 'open' : ''}">
+                        <p class="py-4 pr-8 pl-12 text-stone-300">${reason.content}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+    };
+    injectContent();
 
     // --- Navigation ---
     const navLinks = document.querySelectorAll('.nav-link');
@@ -442,9 +467,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         window.scrollTo(0, 0);
 
-        mobileMenu.classList.add('hidden');
-        menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
+        if (mobileMenu && menuIcon && closeIcon) {
+            mobileMenu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
     };
 
     navLinks.forEach(link => {
@@ -455,23 +482,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-    });
+    if (mobileMenuButton && mobileMenu && menuIcon && closeIcon) {
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        });
+    }
 
     // --- Countdown Timer ---
+    const countdownContainer = document.getElementById('countdown-container');
     const countdownElement = document.getElementById('countdown');
-    if (countdownElement) {
-        const targetDate = new Date(BIRTHDAY_DATE).getTime();
+    if (countdownContainer && countdownElement) {
+        // Use a date in the past for demonstration purposes
+        const targetDate = new Date("December 09, 2025 00:00:00").getTime();
+        // const targetDate = new Date(BIRTHDAY_DATE).getTime();
+
         const countdownInterval = setInterval(() => {
             const now = new Date().getTime();
             const difference = targetDate - now;
 
             if (difference < 0) {
                 clearInterval(countdownInterval);
-                countdownElement.innerHTML = `<span class="text-4xl font-bold text-stone-100">Happy Birthday!</span>`;
+                countdownContainer.innerHTML = `<span class="text-5xl font-bold text-stone-100 font-serif" style="animation: fadeIn 1s forwards;">Happy Birthday!</span>`;
+
+                const homeEffectsContainer = document.getElementById('home-celebration-effects');
+                if (homeEffectsContainer) {
+                    // Add twinkling stars effect which has a transparent background, plus confetti and balloons.
+                    // This prevents the dark background from covering the homepage image.
+                    const twinkling = document.createElement('div');
+                    twinkling.className = 'twinkling';
+                    homeEffectsContainer.appendChild(twinkling);
+
+                    releaseConfetti(homeEffectsContainer);
+                    releaseBalloons(homeEffectsContainer);
+                }
                 return;
             }
 
@@ -515,15 +560,21 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpening = button.getAttribute('aria-expanded') === 'false';
 
             allButtons.forEach(otherButton => {
-                otherButton.setAttribute('aria-expanded', 'false');
-                otherButton.nextElementSibling.classList.remove('open');
-                otherButton.querySelector('span.transform').classList.remove('rotate-180');
+                if (otherButton !== button) {
+                    otherButton.setAttribute('aria-expanded', 'false');
+                    otherButton.nextElementSibling.classList.remove('open');
+                    otherButton.querySelector('span.transform').classList.remove('rotate-180');
+                }
             });
 
             if (isOpening) {
                 button.setAttribute('aria-expanded', 'true');
                 currentContent.classList.add('open');
                 currentIcon.classList.add('rotate-180');
+            } else {
+                 button.setAttribute('aria-expanded', 'false');
+                currentContent.classList.remove('open');
+                currentIcon.classList.remove('rotate-180');
             }
         });
     }
@@ -540,40 +591,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const birthdayMessageContainer = document.getElementById('birthday-message-container');
         const micDeniedMessage = document.getElementById('mic-denied-message');
         const celebrationPrompt = document.getElementById('celebration-prompt');
+        const effectsWrapper = document.getElementById('celebration-effects-wrapper');
 
         let candlesBlown = false;
         let micPermission = 'prompt';
         let audioContext, analyser, animationFrameId;
-
-        const releaseConfetti = () => {
-            const container = document.getElementById('confetti-container-wrapper');
-            container.innerHTML = '<div class="confetti-container"></div>'; // Clear previous
-            const confettiContainer = container.firstChild;
-            for (let i = 0; i < 150; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = `${Math.random() * 100}%`;
-                confetti.style.backgroundColor = CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)];
-                confetti.style.animationDelay = `${Math.random() * 3}s`;
-                confetti.style.animationDuration = `${Math.random() * 2 + 3}s`;
-                confettiContainer.appendChild(confetti);
-            }
-        };
-
-        const releaseBalloons = () => {
-            const container = document.getElementById('balloons-container-wrapper');
-            container.innerHTML = ''; // Clear previous
-            for (let i = 0; i < 25; i++) {
-                const balloon = document.createElement('div');
-                balloon.className = 'balloon';
-                const xEnd = (Math.random() - 0.5) * 200 + 'px';
-                balloon.style.left = `${Math.random() * 95}vw`;
-                balloon.style.backgroundColor = BALLOON_COLORS[Math.floor(Math.random() * BALLOON_COLORS.length)];
-                balloon.style.setProperty('--x-end', xEnd);
-                balloon.style.animation = `floatUp ${Math.random() * 5 + 8}s ease-in-out ${Math.random() * 2}s forwards`;
-                container.appendChild(balloon);
-            }
-        };
 
         const handleBlow = () => {
             if (candlesBlown) return;
@@ -588,11 +610,20 @@ document.addEventListener('DOMContentLoaded', () => {
             celebrationDivider.classList.add('w-0', 'opacity-0');
 
             cakeContainer.classList.add('scale-0', 'opacity-0');
+
+            const messageH2 = birthdayMessageContainer.querySelector('h2');
             birthdayMessageContainer.classList.remove('opacity-0');
+            if(messageH2) {
+                messageH2.style.animation = 'slideUp 1s forwards';
+            }
 
             setTimeout(() => {
-                releaseConfetti();
-                releaseBalloons();
+                const celebrationBg = document.createElement('div');
+                celebrationBg.className = 'celebration-bg';
+                celebrationBg.innerHTML = `<div class="stars"></div><div class="twinkling"></div>`;
+                effectsWrapper.appendChild(celebrationBg);
+                releaseConfetti(effectsWrapper);
+                releaseBalloons(effectsWrapper);
             }, 500);
 
             if (animationFrameId) {
@@ -608,7 +639,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const dataArray = new Uint8Array(analyser.frequencyBinCount);
             analyser.getByteFrequencyData(dataArray);
             const average = dataArray.reduce((acc, val) => acc + val, 0) / dataArray.length;
-            if (average > 50) { // blowThreshold
+            if (average > 70) { // blowThreshold
                 handleBlow();
             } else {
                 animationFrameId = requestAnimationFrame(detectBlow);
